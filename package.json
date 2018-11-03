@@ -1,0 +1,25 @@
+{
+  "name": "tsa-software-2018-2019",
+  "version": "1.0.0",
+  "description": "Software Development Entry for Cedarcrest High School",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "tsa-software-2018-2019"
+  },
+  "keywords": [
+    "software",
+    "electron",
+    "node",
+    "clipboard",
+    "manager"
+  ],
+  "author": "viVAC and co",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^3.0.7"
+  }
+}

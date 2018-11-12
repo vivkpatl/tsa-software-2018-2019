@@ -10,13 +10,18 @@ const electron = require('electron')
 const { app } = require('electron')
 const path = require('path')
 const Tray = electron.Tray
+const { BrowserWindow } = require('electron')
+
 const iconPath = path.join(__dirname, "assets/tray/favicon.ico")
 const Menu = electron.Menu
 
 let tray = null
-/*function createWindow() {
+function createWindow() {
   //Create the dang window my dudes
-  window = new BrowserWindow( { width: 800, height: 500} )
+  window = new BrowserWindow( { width: 320, height: 480, frame: false, backgroundColor: "#1a2f51", movable: true } )
+
+  //Make the window not resizable
+  window.setResizable(false)
 
   //Make it have something to see using some HTML
   window.loadFile('index.html')
@@ -28,7 +33,7 @@ let tray = null
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
         window = null} )
-}*/
+}
 
 //Fire when ready
 app.on('ready', function() {
@@ -53,6 +58,8 @@ app.on('ready', function() {
 
       const contextMenu = Menu.buildFromTemplate(template)
       tray.setContextMenu(contextMenu)
+
+      createWindow()
 })
 
 

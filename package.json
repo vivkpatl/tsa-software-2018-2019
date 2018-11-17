@@ -1,7 +1,7 @@
 {
   "name": "tsa-software-2018-2019",
   "version": "1.0.0",
-  "description": "Software Development Entry for Cedarcrest High School",
+  "description": "A nifty clipboard history manager",
   "main": "index.js",
   "scripts": {
     "start": "electron ."
@@ -17,7 +17,7 @@
     "clipboard",
     "manager"
   ],
-  "author": "viVAC and co",
+  "author": "Nameless",
   "license": "MIT",
   "devDependencies": {
     "electron": "^3.0.7"

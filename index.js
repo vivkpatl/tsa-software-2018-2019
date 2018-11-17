@@ -1,6 +1,6 @@
 //Let's get this module
 const electron = require('electron')
-
+const { clipboard } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
   // be closed automatically when the JavaScript object is garbage collected.
@@ -26,6 +26,8 @@ function createWindow() {
   //Make it have something to see using some HTML
   window.loadFile('index.html')
 
+  //Test out some clipboard functionality
+  clipboard.writeText('Example String')
 
   // Emitted when the window is closed.
       window.on('closed', () => {

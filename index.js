@@ -4,7 +4,7 @@ const { clipboard } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
   // be closed automatically when the JavaScript object is garbage collected.
-  let window
+let window
 
 //Some classes
 const { app } = require('electron')
@@ -18,7 +18,7 @@ const Menu = electron.Menu
 let tray = null
 function createWindow() {
   //Create the dang window my dudes
-  window = new BrowserWindow( { width: 320, height: 480, frame: false, backgroundColor: "#1a2f51", movable: true } )
+  window = new BrowserWindow( {frame: false, transparent: true, width: 320, height: 480} )
 
   //Make the window not resizable
   window.setResizable(false)
@@ -30,11 +30,11 @@ function createWindow() {
   clipboard.writeText('Example String')
 
   // Emitted when the window is closed.
-      window.on('closed', () => {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
-        window = null} )
+  window.on('closed', () => {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    window = null} )
 }
 
 //Fire when ready
@@ -70,7 +70,7 @@ app.on('ready', function() {
  app.on('window-all-closed', () => {
    // On macOS it is common for applications and their menu bar
    // to stay active until the user quits explicitly with Cmd + Q
-   if (process.platform !== 'darwin') {
+   if (process.platform !== 'win32') {
      app.quit()
    }
  })

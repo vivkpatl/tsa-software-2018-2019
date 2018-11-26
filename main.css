@@ -1,0 +1,23 @@
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding: 0px;
+}
+
+.workableArea {
+  -webkit-app-region: drag;
+  font-family: sans-serif;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 320px;
+  height: 480px;
+  padding: 0px;
+  background-color: gray;
+  border-radius: 10px;
+}
+
+#testItem {
+  font-size: 16px;
+  color: white;
+}

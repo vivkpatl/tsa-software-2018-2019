@@ -41,9 +41,10 @@ function createWindow() {
 app.on('ready', function() {
     tray = new Tray(iconPath)
 
+    //Menu in JSON form via an array with sublevels
     let template = [
       {
-        label: 'Test Menu Made By Vivek',
+        label: 'ops',
         submenu: [
           {
             label: 'Option 1'
@@ -58,9 +59,11 @@ app.on('ready', function() {
       }
     ]
 
+      //This is some testing stuff for the tray menu
       const contextMenu = Menu.buildFromTemplate(template)
       tray.setContextMenu(contextMenu)
 
+      //The name says it all
       createWindow()
 })
 
@@ -70,7 +73,7 @@ app.on('ready', function() {
  app.on('window-all-closed', () => {
    // On macOS it is common for applications and their menu bar
    // to stay active until the user quits explicitly with Cmd + Q
-   if (process.platform !== 'win32') {
+   if (process.platform !== 'darwin') {
      app.quit()
    }
  })
@@ -79,5 +82,6 @@ app.on('ready', function() {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (window === null) {
+      createWindow()
     }
   })

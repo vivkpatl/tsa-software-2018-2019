@@ -30,6 +30,10 @@ function createWindow() {
   clipboard.writeText('Example String')
 
   // Emitted when the window is closed.
+
+  // TODO: Created a linked-list of all windows as that structure will properly
+  // handle application flow in terms of which window becomes active upon
+  // closing oen
   window.on('closed', () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time

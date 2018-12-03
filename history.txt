@@ -1,0 +1,17 @@
+const electron = require('electron')
+const { clipboard } = require('electron')
+const clipboardWatcher = require('electron-clipboard-watcher')
+
+let clipboardHistory = [];
+
+clipboardWatcher({
+	watchDelay: 1000,
+	
+	onImageChange: function(nativeImage) {
+		clipboardHistory[clipboardHistory.length] = nativeImage;
+	},
+	
+	onTextChange: function(text){
+		clipboardHistory[clipboardHistory.length] = text;
+	}
+})

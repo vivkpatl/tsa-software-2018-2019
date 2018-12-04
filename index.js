@@ -2,6 +2,9 @@
 const electron = require('electron')
 const { clipboard } = require('electron')
 
+//This is important
+const clipboardWatcher = require('electron-clipboard-watcher')
+
 // Keep a global reference of the window object, if you don't, the window will
   // be closed automatically when the JavaScript object is garbage collected.
 let window
@@ -39,7 +42,7 @@ function createWindow() {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     window = null} )
-	
+
 }
 
 //Fire when ready
@@ -70,6 +73,25 @@ app.on('ready', function() {
 
       //The name says it all
       createWindow()
+
+
+      var clipboardHistory = [];
+
+      clipboardWatcher({
+      	watchDelay: 1000,
+
+      	onImageChange: function(nativeImage) {
+      		clipboardHistory[clipboardHistory.length] = nativeImage;
+          console.log(clipboardHistory)
+      	},
+
+      	onTextChange: function(text){
+      		clipboardHistory[clipboardHistory.length] = text;
+          console.log(clipboardHistory)
+      	}
+      })
+
+
 })
 
 

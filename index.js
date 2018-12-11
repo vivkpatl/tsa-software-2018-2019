@@ -5,6 +5,13 @@ const { clipboard } = require('electron')
 //This is important
 const clipboardWatcher = require('electron-clipboard-watcher')
 
+//Do we really need to use these? Isn't everything already being done through just one window?
+//If we do need to use this, not exactly sure where the message would have to be recieved
+//This tutorial -> https://coursetro.com/posts/code/122/Electron-IPC-Tutorial---Communication-within-your-Electron-App
+// says that the reciever should be in the HTML file, but that doesn't seem right
+const ipcM = require('electron').ipcMain
+const ipcR = electron.ipcRenderer
+
 // Keep a global reference of the window object, if you don't, the window will
   // be closed automatically when the JavaScript object is garbage collected.
 let window
@@ -82,11 +89,15 @@ app.on('ready', function() {
 
       	onImageChange: function(nativeImage) {
       		clipboardHistory[clipboardHistory.length] = nativeImage;
+          //Use the IPC Renderer to send the new array to the IPC Main in the other 'window'
+          ipcR.send('clipboard-history', clipboardHistory)
           console.log(clipboardHistory)
       	},
 
       	onTextChange: function(text){
       		clipboardHistory[clipboardHistory.length] = text;
+          //Use the IPC Renderer to send the new array to the IPC Main in the other 'window'
+          ipcR.send('clipboard-history', clipboardHistory)
           console.log(clipboardHistory)
       	}
       })
@@ -111,4 +122,9 @@ app.on('ready', function() {
     if (window === null) {
       createWindow()
     }
+  })
+
+  //Use IPCMain to recieve the clipboard history array from the other 'window'
+  ipcM.on('clipboard-history', function (event, arg){
+    win.webContents.send('history-array', arg)
   })

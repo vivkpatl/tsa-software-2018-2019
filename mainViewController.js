@@ -9,7 +9,8 @@ clipboardWatcher({
     clipboardHistory[clipboardHistory.length] = nativeImage
     
     //Change an image and give it a try
-    document.getElementById('testImage').href = nativeImage.toDataURL()
+    document.getElementById('testImage').src = nativeImage.toDataURL()
+    
 
   },
 

@@ -52,6 +52,15 @@ body {
   color: white;
 }
 
+.linkItem img {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 5px;

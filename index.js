@@ -15,12 +15,13 @@ const path = require('path')
 const Tray = electron.Tray
 const { BrowserWindow } = require('electron')
 
-const iconPath = path.join(__dirname, "assets/tray/favicon.ico")
-const Menu = electron.Menu
 
-let tray = null
+
+
+//Creates the main window of the application
 function createWindow() {
-  //Create the dang window my dudes
+
+  //Create the dang window my dudes with some CSSinJS options
   window = new BrowserWindow( {frame: false, transparent: true, width: 320, height: 480} )
 
   //Make the window not resizable
@@ -30,7 +31,7 @@ function createWindow() {
   window.loadFile('index.html')
 
   //Test out some clipboard functionality
-  clipboard.writeText('Example String')
+  //clipboard.writeText('Example String')
 
   // Emitted when the window is closed.
 
@@ -47,7 +48,7 @@ function createWindow() {
 
 //Fire when ready
 app.on('ready', function() {
-    tray = new Tray(iconPath)
+    //tray = new Tray(iconPath)
 
     //Menu in JSON form via an array with sublevels
     let template = [
@@ -67,13 +68,13 @@ app.on('ready', function() {
       }
     ]
 
+    /*
       //This is some testing stuff for the tray menu
       const contextMenu = Menu.buildFromTemplate(template)
       tray.setContextMenu(contextMenu)
-
+    */
       //The name says it all
       createWindow()
-
 
       var clipboardHistory = [];
 

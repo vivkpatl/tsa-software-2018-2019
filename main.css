@@ -59,6 +59,7 @@ body {
   width: 90px;
   height: 90px;
   border-radius: 10px;
+  align-content: center;
 }
 
 /* width */

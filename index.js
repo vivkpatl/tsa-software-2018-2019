@@ -75,24 +75,6 @@ app.on('ready', function() {
     */
       //The name says it all
       createWindow()
-
-      var clipboardHistory = [];
-
-      clipboardWatcher({
-      	watchDelay: 1000,
-
-      	onImageChange: function(nativeImage) {
-      		clipboardHistory[clipboardHistory.length] = nativeImage;
-          console.log(clipboardHistory)
-      	},
-
-      	onTextChange: function(text){
-      		clipboardHistory[clipboardHistory.length] = text;
-          console.log(clipboardHistory)
-      	}
-      })
-
-
 })
 
 

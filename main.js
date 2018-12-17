@@ -103,7 +103,9 @@ app.on('ready', function() {
     }
   })
 
+/*
   //Use IPCMain to recieve the clipboard history array from the other 'window'
   ipcM.on('clipboard-history', function (event, arg){
     win.webContents.send('history-array', arg)
   })
+  */

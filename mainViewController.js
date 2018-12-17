@@ -1,11 +1,21 @@
-//never hurts to require this module to avoid a TON of ipcRenderer messages to ipcMain
-const { clipboard } = require('electron')
+const clipboardWatcher = require(electron-clipboard-watcher)
 
-//let's try this..... it should copy the text of the <p> above onto the clipboard
-document.getElementById('testItem').addEventListener('click', function(err) {
-  clipboard.writeText(document.getElementById('testItem').innerHTML)
-})
+var clipboardHistory = [];
 
-document.getElementById('testItem').addEventListener('click', function(err) {
-  clipboard.writeText(document.getElementById('testItem').innerHTML)
+clipboardWatcher({
+  watchDelay: 250,
+
+  onImageChange: function(nativeImage) {
+    clipboardHistory[clipboardHistory.length] = nativeImage
+    
+    //Change an image and give it a try
+    document.getElementById('testImage').src = nativeImage.toDataURL()
+    
+
+  },
+
+  onTextChange: function(text){
+    clipboardHistory[clipboardHistory.length] = text
+    console.log(clipboardHistory)
+  }
 })

@@ -2,6 +2,7 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   padding: 0px;
+  font-family: 'Shanti', sans-serif;
 }
 
 .workableArea {
@@ -39,28 +40,54 @@ body {
   border-radius: 0px 0px 10px 10px;
 }
 
-.linkItem {
+.genericItem {
   position: relative;
   left: 10px;
   top: 10px;
   font-size: 16px;
+  font-family: 'Shanti', sans-serif;
   width: 300px;
   height: 90px;
   margin-bottom: 10px;
   border-radius: 10px;
   background-color: #222222;
-  color: white;
+  color: red;
+  display: table;
+
+  /*Animation Stuff*/
+  -webkit-animation: fadein 1s;
+  animation: fadein 1s;
 }
 
-.linkItem img {
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.genericItem #descriptionText {
+  position: relative;
+  left: 20px;
+  top: 20px;
+  color: blue;
+}
+
+.genericItem #descriptionText {
+  position: relative;
+  left: 100px;
+  top: 10px;
+  color: blue;
+}
+
+.genericItem #imagePreview {
+  object-fit: none;
   position: relative;
   left: 0px;
   top: 0px;
   width: 90px;
-  height: 90px;
-  border-radius: 10px;
-  align-content: center;
+  height: 100%;
+  border-radius: 10px 0px 0px 10px;
 }
+
 
 /* width */
 ::-webkit-scrollbar {

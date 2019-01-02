@@ -8,15 +8,28 @@
     </head>
 
     <body>
-      <div class="workableArea">
-          <div class="topBar"></div>
+      <div id="workableArea">
 
-          <div class="itemContainer" id="historyList">
+          <!-- The top bar of the application -->
+          <div id="topBar">
 
+            <!-- The application name -->
+            <div id="appName">Clippr</div>
+
+            <!-- Exit the application by clicking an x -->
+            <div id="exitApp">
+              <img src="assets/icons/ic_exit_large.png"/>
+            </div>
+          
           </div>
+
+          <!-- The area that contains the list of items -->
+          <div class="itemContainer" id="historyList"></div>
+
       </div>
     </body>
 
     <script src="index.js"></script>
+    <!--script src="init.js"></script>-->
     
   </html>

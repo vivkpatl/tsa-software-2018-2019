@@ -100,15 +100,6 @@ body {
   color: red;
 }
 
-.genericItem .imageText {
-  position: absolute;
-  width: 50px;
-  height: 20px;
-  top: 5px;
-  left: 95px;
-  color: red;
-}
-
 .genericItem .imagePreview {
   object-fit: none;
   position: absolute;
@@ -119,6 +110,42 @@ body {
   border-radius: 10px 0px 0px 10px;
 }
 
+.genericItem .imageText {
+  position: absolute;
+  width: 50px;
+  height: 20px;
+  top: 5px;
+  left: 95px;
+  color: red;
+}
+
+.genericItem .copyButton {
+  position: absolute;
+  left: 275px;
+  top: 65px;
+  width: 20px;
+  height: 20px;
+}
+
+.copyButton img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.genericItem .deleteButton {
+  position: absolute;
+  left: 275px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.deleteButton img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* width */
 ::-webkit-scrollbar {

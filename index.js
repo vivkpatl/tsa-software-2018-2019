@@ -7,6 +7,26 @@ function closeApp() {
   require('remote').app.quit()
 }
 
+//Reusable elements
+function getCopyButton() {
+  let copyButton = document.createElement("DIV")
+    copyButton.className = "copyButton"
+  let copyIcon = document.createElement("IMG")
+    copyIcon.src = "assets/icons/ic_copy.png"
+    copyButton.appendChild(copyIcon)
+  
+  return copyButton
+}
+
+function getDeleteButton() {
+  let deleteButton = document.createElement("DIV")
+    deleteButton.className = "deleteButton"
+  let deleteIcon = document.createElement("IMG")
+    deleteIcon.src = "assets/icons/ic_exit_small.png"
+    deleteButton.appendChild(deleteIcon)
+
+  return deleteButton
+}
 
 function uponImageChange(nativeImage) {
   clipboardHistory[clipboardHistory.length] = nativeImage
@@ -25,6 +45,8 @@ function uponImageChange(nativeImage) {
   
   newImg.appendChild(img)
   newImg.appendChild(newText)
+  newImg.appendChild(getDeleteButton())
+  newImg.appendChild(getCopyButton())
 
   newImg.addEventListener("click", function(e) {
     var element = e.target;
@@ -47,7 +69,7 @@ function uponImageChange(nativeImage) {
   console.log(clipboardHistory)
 }
 
-function uponTextChange(text){
+function uponTextChange(text) {
   clipboardHistory[clipboardHistory.length] = text
   let newItem = document.createElement("DIV")
     newItem.className = "genericItem"
@@ -56,8 +78,11 @@ function uponTextChange(text){
     newDescriptionText.className = "descriptionText"
   let descriptionTextNode = document.createTextNode("Text")
     newDescriptionText.appendChild(descriptionTextNode)
-  newItem.appendChild(newDescriptionText)
 
+  
+  newItem.appendChild(newDescriptionText)
+  newItem.appendChild(getDeleteButton())
+  newItem.appendChild(getCopyButton())
 
   newItem.addEventListener("click", function(e) {
     var element = e.target;

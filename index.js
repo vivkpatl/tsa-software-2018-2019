@@ -15,6 +15,33 @@ function getCopyButton() {
     copyIcon.src = "assets/icons/ic_copy.png"
     copyButton.appendChild(copyIcon)
   
+  copyButton.addEventListener("click", function(e) {
+    var element = e.target;
+  
+    while (element.className != "genericItem") {
+      element = element.parentNode
+    }
+
+
+    watcher.stop();
+
+    //Only for text right now
+    var children = element.childNodes
+
+    for (var i = 0; i < children.length; i++) {
+      if (children[i].className == "descriptionText")
+      clipboard.writeText(children[i].innerHTML)
+    }
+
+    watcher = clipboardWatcher({
+      watchDelay: 100,
+    
+      onImageChange: uponImageChange,
+    
+      onTextChange: uponTextChange
+    })
+  })
+
   return copyButton
 }
 
@@ -25,6 +52,23 @@ function getDeleteButton() {
     deleteIcon.src = "assets/icons/ic_exit_small.png"
     deleteButton.appendChild(deleteIcon)
 
+    deleteButton.addEventListener("click", function(e) {
+      var element = e.target;
+
+      while (element.className != "genericItem") {
+        element = element.parentNode
+      }
+  
+      element.WebkitAnimation = "fadeout 1s"
+      element.style.animation = "fadeout 1s"
+  
+      setTimeout(function() { 
+        element.parentNode.removeChild(element);
+      }, 200);
+    })
+
+
+    
   return deleteButton
 }
 
@@ -48,21 +92,6 @@ function uponImageChange(nativeImage) {
   newImg.appendChild(getDeleteButton())
   newImg.appendChild(getCopyButton())
 
-  newImg.addEventListener("click", function(e) {
-    var element = e.target;
-
-    while (element.className != "genericItem") {
-      element = element.parentNode
-    }
-
-    element.WebkitAnimation = "fadeout 1s"
-    element.style.animation = "fadeout 1s"
-
-    setTimeout(function() { 
-      element.parentNode.removeChild(element);
-    }, 200);
-  })
-
   let list = document.getElementById("historyList")
   list.prepend(newImg)
 
@@ -76,28 +105,13 @@ function uponTextChange(text) {
 
   let newDescriptionText = document.createElement("DIV")
     newDescriptionText.className = "descriptionText"
-  let descriptionTextNode = document.createTextNode("Text")
+  let descriptionTextNode = document.createTextNode(text)
     newDescriptionText.appendChild(descriptionTextNode)
 
   
   newItem.appendChild(newDescriptionText)
   newItem.appendChild(getDeleteButton())
   newItem.appendChild(getCopyButton())
-
-  newItem.addEventListener("click", function(e) {
-    var element = e.target;
-
-    while (element.className != "genericItem") {
-      element = element.parentNode
-    }
-
-    element.WebkitAnimation = "fadeout 1s"
-    element.style.animation = "fadeout 1s"
-
-    setTimeout(function() { 
-      element.parentNode.removeChild(element);
-    }, 200);
-  })
 
   let list = document.getElementById("historyList")
   list.prepend(newItem)
@@ -107,7 +121,11 @@ function uponTextChange(text) {
 
 var clipboardHistory = [];
 
-clipboardWatcher({
+
+//--------------------------------------------------------------------
+//This is the magic portion
+//--------------------------------------------------------------------
+var watcher = clipboardWatcher({
   watchDelay: 100,
 
   onImageChange: uponImageChange,

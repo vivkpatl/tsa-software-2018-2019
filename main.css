@@ -24,7 +24,7 @@ body {
   position: relative;
   left: 0%;
   top: 0%;
-  width: 320px;
+  width: 292px;
   height: 30px;
   border-radius: 10px 10px 0px 0px;
 }
@@ -45,12 +45,23 @@ body {
   top: 4px;
   width: 24px;
   height: 24px;
+  transform: rotate(0deg);
 }
 
 #exitApp img {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  transform: rotate(0deg);
+}
+
+#exitApp:hover {
+  animation: spin 0.5s;
+}
+
+@keyframes spin {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(90deg)}
 }
 
 .itemContainer {
@@ -84,7 +95,7 @@ body {
 }
 
 @keyframes fadein {
-  from {opacity: 0;}
+  from {position: 0;}
   to {opacity: 1;}
 }
 
@@ -93,10 +104,21 @@ body {
   to {opacity: 0;}
 }
 
-.genericItem .descriptionText {
+.genericItem .textLabel {
   position: absolute;
   left: 5px;
   top: 5px;
+  color: red;
+}
+
+.genericItem .descriptionText {
+  position: absolute;
+  left: 5px;
+  top: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 200px;
   color: red;
 }
 
@@ -110,7 +132,7 @@ body {
   border-radius: 10px 0px 0px 10px;
 }
 
-.genericItem .imageText {
+.genericItem .imageLabel {
   position: absolute;
   width: 50px;
   height: 20px;

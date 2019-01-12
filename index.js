@@ -1,11 +1,10 @@
 const electron = require('electron')
 const { clipboard } = require('electron')
+const { remote } = electron.remote
+
+const nativeImg = require('electron').nativeImage
 
 const clipboardWatcher = require('electron-clipboard-watcher')
-
-function closeApp() {
-  require('remote').app.quit()
-}
 
 //Reusable elements
 function getCopyButton() {
@@ -21,16 +20,23 @@ function getCopyButton() {
     while (element.className != "genericItem") {
       element = element.parentNode
     }
-
-
+    
+    //No need to have the item pop up again
     watcher.stop();
 
-    //Only for text right now
+    //Capture the data we need
     var children = element.childNodes
 
     for (var i = 0; i < children.length; i++) {
+      //If the data in question is text
       if (children[i].className == "descriptionText")
-      clipboard.writeText(children[i].innerHTML)
+        clipboard.writeText(children[i].innerHTML)
+      
+      //If the data in question is an image
+      if (children[i].className == "imagePreview") {
+        var image = nativeImg.createFromDataURL(children[i].src)
+        clipboard.writeImage(image);
+      }
     }
 
     watcher = clipboardWatcher({
@@ -67,23 +73,21 @@ function getDeleteButton() {
       }, 200);
     })
 
-
-    
   return deleteButton
 }
 
-function uponImageChange(nativeImage) {
-  clipboardHistory[clipboardHistory.length] = nativeImage
+function uponImageChange(imageData) {
+  clipboardHistory[clipboardHistory.length] = imageData
 
   let newImg = document.createElement("DIV")
   newImg.className = "genericItem"
 
   let img = document.createElement("IMG")
   img.className = "imagePreview"
-  img.src = nativeImage.toDataURL()
+  img.src = imageData.toDataURL()
 
   let newText = document.createElement("DIV")
-    newText.className = "imageText"
+    newText.className = "imageLabel"
   let imgTextNode = document.createTextNode("Image")
     newText.appendChild(imgTextNode)
   

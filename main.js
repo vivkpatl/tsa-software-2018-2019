@@ -29,7 +29,7 @@ const { BrowserWindow } = require('electron')
 function createWindow() {
 
   //Create the dang window my dudes with some CSSinJS options
-  window = new BrowserWindow( {frame: false, transparent: true, width: 320, height: 480} )
+  window = new BrowserWindow( {frame: false, transparent: true, width: 321, height: 481} )
 
   //Make the window not resizable
   window.setResizable(false)

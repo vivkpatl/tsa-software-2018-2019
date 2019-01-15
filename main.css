@@ -46,6 +46,7 @@ body {
   width: 24px;
   height: 24px;
   transform: rotate(0deg);
+  cursor: pointer;
 }
 
 #exitApp img {
@@ -95,7 +96,7 @@ body {
 }
 
 @keyframes fadein {
-  from {position: 0;}
+  from {opacity: 0;}
   to {opacity: 1;}
 }
 
@@ -143,10 +144,15 @@ body {
 
 .genericItem .copyButton {
   position: absolute;
-  left: 275px;
+  background: black;
+  border-radius: 10px 10px 10px 10px;
+  left: 250px;
   top: 65px;
-  width: 20px;
+  width: 45px;
   height: 20px;
+  color: rgb(255, 128, 128);
+  cursor: pointer;
+  text-align: center;
 }
 
 .copyButton img {
@@ -157,10 +163,15 @@ body {
 
 .genericItem .deleteButton {
   position: absolute;
-  left: 275px;
+  background: black;
+  border-radius: 10px 10px 10px 10px;
+  left: 245px;
   top: 5px;
-  width: 20px;
+  width: 50px;
   height: 20px;
+  color: rgb(255, 128, 128);
+  cursor: pointer;
+  text-align: center;
 }
 
 .deleteButton img {

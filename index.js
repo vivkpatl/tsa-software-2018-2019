@@ -10,8 +10,7 @@ const clipboardWatcher = require('electron-clipboard-watcher')
 function getCopyButton() {
   let copyButton = document.createElement("DIV")
     copyButton.className = "copyButton"
-  let copyIcon = document.createElement("IMG")
-    copyIcon.src = "assets/icons/ic_copy.png"
+  let copyIcon = document.createTextNode("Copy")
     copyButton.appendChild(copyIcon)
   
   copyButton.addEventListener("click", function(e) {
@@ -54,8 +53,7 @@ function getCopyButton() {
 function getDeleteButton() {
   let deleteButton = document.createElement("DIV")
     deleteButton.className = "deleteButton"
-  let deleteIcon = document.createElement("IMG")
-    deleteIcon.src = "assets/icons/ic_exit_small.png"
+  let deleteIcon = document.createTextNode("Delete")
     deleteButton.appendChild(deleteIcon)
 
     deleteButton.addEventListener("click", function(e) {

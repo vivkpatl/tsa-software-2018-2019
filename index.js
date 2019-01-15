@@ -112,7 +112,12 @@ function uponTextChange(text) {
   let descriptionTextNode = document.createTextNode(text)
     newDescriptionText.appendChild(descriptionTextNode)
 
-  
+  let textLabel = document.createElement("DIV")
+    textLabel.classList.add("textLabel")
+    textLabel.appendChild(document.createTextNode("Text"))
+
+    
+  newItem.appendChild(textLabel)
   newItem.appendChild(newDescriptionText)
   newItem.appendChild(getDeleteButton())
   newItem.appendChild(getCopyButton())

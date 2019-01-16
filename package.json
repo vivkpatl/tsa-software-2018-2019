@@ -1,5 +1,5 @@
 {
-  "name": "tsa-software-2018-2019",
+  "name": "Clippr",
   "version": "1.0.0",
   "description": "A nifty clipboard history manager",
   "main": "main.js",
@@ -20,7 +20,8 @@
   "author": "Nameless",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^3.0.7"
+    "electron": "^3.0.7",
+    "electron-packager": "^13.0.1"
   },
   "dependencies": {
     "electron-clipboard-watcher": "^1.0.1"
